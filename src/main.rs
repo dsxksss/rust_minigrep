@@ -4,7 +4,7 @@
 3、重构:改进模块和错误处理(完成)
 4、使用TDD(测试驱动开发)开放Text库功能(完成)
 5、使用环境变量(完成)
-6、将错误消息写入标准错误而不是标准输出
+6、将错误消息写入标准错误而不是标准输出(完成)
 */
 
 use minigrep::Config;
@@ -17,13 +17,13 @@ fn main() {
     //参数间用空格分隔
     let args: Vec<String> = env::args().collect();
     let config = Config::new(&args).unwrap_or_else(|err| {
-        println!("Problem parsing argunments: {}", err);
+        eprintln!("Problem parsing argunments: {}", err);
         process::exit(1); //这里的1表示程序退出的状态码，这个可以自定义的
     }); //这种闭包方法类似于javaScript里的箭头匿名函数一样
 
     //这里使用if let来处理可能发生的错误
     if let Err(e) = minigrep::run(config) {
-        println!("Application error: {}", e);
+        eprintln!("Application error: {}", e);
         process::exit(1);
     }
 }

@@ -1,6 +1,6 @@
-use std::env;
+use std::env; //环境变量操作模块
 use std::error::Error; //以后补充
-use std::fs; //文件操作模块 //环境变量操作模块
+use std::fs; //文件操作模块
 
 //Result泛型第一个参数()，表示不返回任何内容，但是最后得放到Ok里
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
